@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gokul R — QA Lead & Performance Engineering Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --dark: #111318;
+    --card: #16191f;
+    --border: #1e2330;
+    --accent: #00c896;
+    --accent2: #0084ff;
+    --gold: #f5a623;
+    --text: #e8eaf0;
+    --muted: #7a8099;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NOISE TEXTURE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 60% 50% at 70% 50%, rgba(0,200,150,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(0,132,255,0.05) 0%, transparent 70%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(0,200,150,0.1);
+    border: 1px solid rgba(0,200,150,0.3);
+    color: var(--accent);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 580px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .hero-stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    color: var(--white);
+    display: block;
+    line-height: 1;
+  }
+
+  .hero-stat-num span { color: var(--accent); }
+
+  .hero-stat-label {
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 0.3rem;
+    display: block;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--black);
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-primary:hover {
+    background: #00e8ad;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0,200,150,0.3);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 6rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-label::after {
+    content: '';
+    height: 1px;
+    width: 40px;
+    background: var(--accent);
+    opacity: 0.5;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--white);
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+    line-height: 1.1;
+  }
+
+  /* IMPACT METRICS */
+  .metrics-section {
+    background: var(--dark);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 4rem 2rem;
+  }
+
+  .metrics-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+
+  .metric-card {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 12px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+  }
+
+  .metric-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0,200,150,0.3);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  }
+
+  .metric-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3rem;
+    color: var(--accent);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .metric-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  .metric-company {
+    font-size: 0.7rem;
+    color: var(--accent2);
+    margin-top: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  /* GRAI SHOWCASE */
+  .grai-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .grai-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(ellipse, rgba(0,200,150,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .grai-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .grai-icon {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, rgba(0,200,150,0.2), rgba(0,132,255,0.2));
+    border: 1px solid rgba(0,200,150,0.3);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  .grai-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+
+  .grai-subtitle {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .grai-tag {
+    display: inline-block;
+    background: rgba(245,166,35,0.15);
+    border: 1px solid rgba(245,166,35,0.3);
+    color: var(--gold);
+    padding: 0.2rem 0.7rem;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.05em;
+    margin-left: 0.5rem;
+  }
+
+  .grai-impact {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .grai-impact-item {
+    background: rgba(0,200,150,0.05);
+    border: 1px solid rgba(0,200,150,0.15);
+    border-radius: 10px;
+    padding: 1.2rem;
+    text-align: center;
+  }
+
+  .grai-impact-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    color: var(--accent);
+    display: block;
+  }
+
+  .grai-impact-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 0.2rem;
+  }
+
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+  }
+
+  .tech-tag {
+    background: var(--dark);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-family: 'JetBrains Mono', monospace;
+    transition: all 0.2s;
+  }
+
+  .tech-tag:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* EXPERIENCE */
+  .experience-timeline {
+    position: relative;
+  }
+
+  .experience-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, var(--accent), var(--accent2), transparent);
+  }
+
+  .exp-item {
+    padding-left: 2.5rem;
+    padding-bottom: 3rem;
+    position: relative;
+  }
+
+  .exp-item::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 8px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px rgba(0,200,150,0.5);
+  }
+
+  .exp-period {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+
+  .exp-role {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+
+  .exp-company {
+    font-size: 0.9rem;
+    color: var(--accent2);
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  .exp-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .exp-points li {
+    color: var(--muted);
+    font-size: 0.9rem;
+    padding-left: 1.2rem;
+    position: relative;
+  }
+
+  .exp-points li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.8rem;
+  }
+
+  .exp-highlight {
+    color: var(--text) !important;
+    font-weight: 500;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-category {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.8rem;
+    transition: all 0.3s;
+  }
+
+  .skill-category:hover {
+    border-color: rgba(0,200,150,0.2);
+    transform: translateY(-2px);
+  }
+
+  .skill-cat-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+
+  .skill-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-item {
+    background: var(--dark);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 500;
+  }
+
+  /* AWARDS */
+  .awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .award-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.8rem;
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    transition: all 0.3s;
+  }
+
+  .award-card:hover {
+    border-color: rgba(245,166,35,0.3);
+    transform: translateY(-2px);
+  }
+
+  .award-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  .award-title {
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+    font-size: 0.95rem;
+  }
+
+  .award-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .award-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--dark);
+    border-top: 1px solid var(--border);
+    padding: 6rem 2rem;
+    text-align: center;
+  }
+
+  .contact-inner {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.8rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: all 0.2s;
+    background: var(--card);
+  }
+
+  .contact-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--muted);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: all 0.6s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem; }
+    .nav-links { display: none; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+    section { padding: 4rem 1.5rem; }
+    .grai-card { padding: 2rem; }
+    .contact-links { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Gokul<span>.</span>R</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#grai">GRAI</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Available for Ireland Opportunities</div>
+    <h1>QA Lead &<br><em>Performance</em><br>Engineer</h1>
+    <p class="hero-sub">
+      10+ years delivering enterprise-grade quality across Irish, UK and global markets. 
+      Specialising in Performance Engineering, AI-driven Test Analytics, and cross-functional QA leadership.
+    </p>
+    <div class="hero-stats">
+      <div>
+        <span class="hero-stat-num">10<span>+</span></span>
+        <span class="hero-stat-label">Years Experience</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">28<span>%</span></span>
+        <span class="hero-stat-label">Perf Degradation Reduced</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">40<span>%</span></span>
+        <span class="hero-stat-label">Scripting Effort Cut</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">3<span>+</span></span>
+        <span class="hero-stat-label">Years Irish Market</span>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a href="mailto:gokulram.eng@gmail.com" class="btn-primary">✉ Get In Touch</a>
+      <a href="#experience" class="btn-secondary">View Experience →</a>
+    </div>
+  </div>
+</div>
+
+<!-- METRICS -->
+<div class="metrics-section">
+  <div class="metrics-inner">
+    <div class="metric-card fade-up">
+      <span class="metric-num">28%</span>
+      <div class="metric-desc">Reduction in performance degradation across every major release</div>
+      <div class="metric-company">AMCS Group · Ireland</div>
+    </div>
+    <div class="metric-card fade-up">
+      <span class="metric-num">33%</span>
+      <div class="metric-desc">Improvement in end-to-end response performance</div>
+      <div class="metric-company">Starbucks · via Infosys</div>
+    </div>
+    <div class="metric-card fade-up">
+      <span class="metric-num">36%</span>
+      <div class="metric-desc">Increase in team productivity through cross-team strategy</div>
+      <div class="metric-company">BoardEx · Altrata · UK</div>
+    </div>
+    <div class="metric-card fade-up">
+      <span class="metric-num">40%</span>
+      <div class="metric-desc">Reduction in JMeter scripting effort via AI-assisted automation</div>
+      <div class="metric-company">Starbucks · via Infosys</div>
+    </div>
+  </div>
+</div>
+
+<!-- GRAI -->
+<section id="grai">
+  <div class="section-label">Key Project</div>
+  <h2 class="section-title">GRAI — AI Performance<br>Trend Analyser</h2>
+  <div class="grai-card fade-up">
+    <div class="grai-header">
+      <div class="grai-icon">🤖</div>
+      <div>
+        <div class="grai-title">GRAI <span class="grai-tag">JAN 2026 — PRESENT</span></div>
+        <div class="grai-subtitle">AI-powered performance intelligence layer for JMeter test results</div>
+      </div>
+    </div>
+    <p style="color: var(--muted); font-size: 0.95rem; max-width: 700px; margin-bottom: 1.5rem;">
+      Built an AI-powered tool that reads JMeter CSV results, compares runs via rolling average and baseline comparison, 
+      and generates a colour-coded HTML dashboard with AI-driven insights — eliminating the manual "synthesis gap" 
+      that every performance team struggles with.
+    </p>
+    <div class="grai-impact">
+      <div class="grai-impact-item">
+        <span class="grai-impact-num">2min</span>
+        <div class="grai-impact-label">Report generation (was 2-3 hours)</div>
+      </div>
+      <div class="grai-impact-item">
+        <span class="grai-impact-num">99%</span>
+        <div class="grai-impact-label">Reduction in manual overhead</div>
+      </div>
+      <div class="grai-impact-item">
+        <span class="grai-impact-num">Auto</span>
+        <div class="grai-impact-label">Jenkins CI/CD integration</div>
+      </div>
+      <div class="grai-impact-item">
+        <span class="grai-impact-num">AI</span>
+        <div class="grai-impact-label">Groq LLaMA powered insights</div>
+      </div>
+    </div>
+    <div style="margin-top: 1rem;">
+      <div style="font-size: 0.8rem; color: var(--muted); margin-bottom: 0.8rem; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em;">TECH STACK</div>
+      <div class="tech-stack">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Groq LLaMA AI</span>
+        <span class="tech-tag">Apache JMeter</span>
+        <span class="tech-tag">Jenkins</span>
+        <span class="tech-tag">SQLite</span>
+        <span class="tech-tag">HTML/CSS</span>
+        <span class="tech-tag">CI/CD</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Career</div>
+  <h2 class="section-title">Professional Experience</h2>
+  <div class="experience-timeline">
+
+    <div class="exp-item fade-up">
+      <div class="exp-period">MAR 2025 — DEC 2025</div>
+      <div class="exp-role">QA Lead — Performance & Functional Testing</div>
+      <div class="exp-company">Infosys · Client: Starbucks · Remote — Canada & India</div>
+      <ul class="exp-points">
+        <li class="exp-highlight">Led global QA and performance testing team across Ireland, Canada and India</li>
+        <li>Defined and executed full STLC and PTLC — functional, regression, API, load, stress and endurance testing</li>
+        <li class="exp-highlight">Introduced AI-assisted tooling reducing JMeter scripting effort by 40%</li>
+        <li>Drove 33% improvement in end-to-end response time through cross-functional collaboration</li>
+        <li>Delivered stakeholder quality reports covering throughput, latency, error rates and SLA compliance</li>
+      </ul>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-period">JAN 2022 — MAR 2025 · 3 Years</div>
+      <div class="exp-role">QA Lead — Performance & Functional Testing</div>
+      <div class="exp-company">AMCS Group Ireland · Remote — Ireland, Philippines & India</div>
+      <ul class="exp-points">
+        <li class="exp-highlight">Owned end-to-end QA strategy for enterprise SaaS products serving Irish market</li>
+        <li class="exp-highlight">Reduced performance degradation by 28% across every major release</li>
+        <li>Led distributed QA teams across Ireland, the Philippines and India</li>
+        <li>Validated payment integrations — Realex (Irish), Google Pay, Apple Pay, Heartland, ACI Payments</li>
+        <li>Managed test plans, defect triage and release sign-off via Azure DevOps</li>
+      </ul>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-period">JAN 2018 — JAN 2022 · 4 Years</div>
+      <div class="exp-role">Senior QA Engineer — Team Lead</div>
+      <div class="exp-company">BoardEx / Altrata · Remote — UK & India</div>
+      <ul class="exp-points">
+        <li>Led 5-member QA team through full STLC for e-commerce and fintech platforms</li>
+        <li class="exp-highlight">Increased team productivity by 36% through standardised QA processes</li>
+        <li>Managed RESTful API test suites with Jenkins CI automation</li>
+        <li>Detected critical thread pool issues under endurance testing before production deployment</li>
+      </ul>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-period">2013 — 2018</div>
+      <div class="exp-role">Software Test Engineer</div>
+      <div class="exp-company">ISH Info Systems · OptiSol Business Solutions</div>
+      <ul class="exp-points">
+        <li>Built foundational QA skills across functional and regression testing</li>
+        <li>Progressed from junior tester to independent test engineer</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Expertise</div>
+  <h2 class="section-title">Core Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-category fade-up">
+      <div class="skill-cat-title">Performance Testing</div>
+      <div class="skill-items">
+        <span class="skill-item">Apache JMeter</span>
+        <span class="skill-item">BlazeMeter</span>
+        <span class="skill-item">Load Testing</span>
+        <span class="skill-item">Stress Testing</span>
+        <span class="skill-item">Endurance Testing</span>
+        <span class="skill-item">NFT</span>
+        <span class="skill-item">PTLC</span>
+        <span class="skill-item">WLM</span>
+      </div>
+    </div>
+    <div class="skill-category fade-up">
+      <div class="skill-cat-title">QA Leadership</div>
+      <div class="skill-items">
+        <span class="skill-item">Test Strategy</span>
+        <span class="skill-item">STLC Management</span>
+        <span class="skill-item">Team Leadership</span>
+        <span class="skill-item">Release Sign-off</span>
+        <span class="skill-item">Defect Management</span>
+        <span class="skill-item">Stakeholder Reporting</span>
+      </div>
+    </div>
+    <div class="skill-category fade-up">
+      <div class="skill-cat-title">Monitoring & Observability</div>
+      <div class="skill-items">
+        <span class="skill-item">Datadog</span>
+        <span class="skill-item">Azure App Insights</span>
+        <span class="skill-item">Bottleneck Analysis</span>
+        <span class="skill-item">SLA Reporting</span>
+      </div>
+    </div>
+    <div class="skill-category fade-up">
+      <div class="skill-cat-title">API & Functional Testing</div>
+      <div class="skill-items">
+        <span class="skill-item">Postman</span>
+        <span class="skill-item">Swagger</span>
+        <span class="skill-item">REST API</span>
+        <span class="skill-item">Microservices</span>
+        <span class="skill-item">Regression Testing</span>
+        <span class="skill-item">UAT</span>
+      </div>
+    </div>
+    <div class="skill-category fade-up">
+      <div class="skill-cat-title">CI/CD & DevOps</div>
+      <div class="skill-items">
+        <span class="skill-item">Jenkins</span>
+        <span class="skill-item">Azure DevOps</span>
+        <span class="skill-item">Jira</span>
+        <span class="skill-item">Confluence</span>
+        <span class="skill-item">Microsoft Azure</span>
+        <span class="skill-item">Rancher</span>
+      </div>
+    </div>
+    <div class="skill-category fade-up">
+      <div class="skill-cat-title">Payments & Fintech</div>
+      <div class="skill-items">
+        <span class="skill-item">Realex (Irish)</span>
+        <span class="skill-item">Google Pay</span>
+        <span class="skill-item">Apple Pay</span>
+        <span class="skill-item">Heartland</span>
+        <span class="skill-item">ACI Payments</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="about">
+  <div class="section-label">Recognition</div>
+  <h2 class="section-title">Awards & Achievements</h2>
+  <div class="awards-grid">
+    <div class="award-card fade-up">
+      <div class="award-icon">🏆</div>
+      <div>
+        <div class="award-title">Global Leadership Award</div>
+        <div class="award-year">2024</div>
+        <div class="award-desc">Led testing teams across UK, Ireland & India. Delivered all projects on time with 36% productivity improvement.</div>
+      </div>
+    </div>
+    <div class="award-card fade-up">
+      <div class="award-icon">💎</div>
+      <div>
+        <div class="award-title">TCS Gem Award</div>
+        <div class="award-year">2014</div>
+        <div class="award-desc">Recognised for QA workflow improvements and 100% production quality across high-stakes releases.</div>
+      </div>
+    </div>
+    <div class="award-card fade-up">
+      <div class="award-icon">⭐</div>
+      <div>
+        <div class="award-title">Dell Star Performer</div>
+        <div class="award-year">2012</div>
+        <div class="award-desc">Awarded for surpassing data quality targets with strict SLA adherence.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="section-label" style="justify-content: center;">Contact</div>
+    <h2 class="section-title" style="margin-bottom: 1rem;">Let's Connect</h2>
+    <p style="color: var(--muted); font-size: 0.95rem;">
+      Based in Chennai, India — actively seeking QA Lead and Performance Test Lead opportunities in Ireland. 
+      Available immediately. Open to full-time and contract roles.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:gokulram.eng@gmail.com" class="contact-link">
+        ✉ gokulram.eng@gmail.com
+      </a>
+      <a href="https://linkedin.com/in/gokulramamuthy" target="_blank" class="contact-link">
+        in LinkedIn Profile
+      </a>
+      <a href="tel:+919551831831" class="contact-link">
+        📞 +91 9551831831
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Gokul R · QA Lead & Performance Engineering Specialist · Chennai, India</p>
+</footer>
+
+<script>
+  // Intersection Observer for fade-up animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
